@@ -4,6 +4,8 @@
 
 [![License](https://badgen.net/github/license/HinnliDev/VaLoader)](LICENSE)
 
+<img width="1170" height="520" alt="example" src="https://github.com/user-attachments/assets/a54bcbf0-4dd7-4552-a77a-3617e03a80db" />
+
 Valoader is a compact Android launcher with an ImGui skeleton ESP for the
 arm64 build of Valorant Mobile (`com.tencent.tmgp.codev`). It runs the game in
 the loader process while reusing the APK resources, assets and native
