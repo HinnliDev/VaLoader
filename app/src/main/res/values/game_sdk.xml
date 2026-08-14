@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Small configuration values read by the game SDK through Valoader's
+         Activity resources. Bulk game assets remain in the installed APK. -->
+    <string name="gcloud_game_id" translatable="false">256572112</string>
+    <string name="gcloud_game_key" translatable="false">c2ecda7de8fc7b69b981bcf8d5bc12a8</string>
+    <string name="gcloud_remote_control_url" translatable="false">https://cloudctrl.gcloud.qq.com</string>
+    <string name="gcloud_trace_url" translatable="false">https://cloudctrl.gcloud.qq.com/gtrace/get_traceid_list</string>
+</resources>

@@ -1,0 +1,59 @@
+plugins {
+    id "com.android.application"
+}
+
+android {
+    namespace "com.hinnli.valoader"
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.hinnli.valoader"
+        minSdk 30
+        targetSdk 30
+        // Game-side SDKs query the hosting Activity package instead of the
+        // mounted game's PackageInfo. Keep the loader's published identity
+        // separate, but expose the matching runtime version tuple.
+        versionCode 2911
+        versionName "1.24.0"
+
+        ndk {
+            abiFilters "arm64-v8a"
+        }
+
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++20 -fexceptions -frtti"
+                arguments "-DANDROID_STL=c++_shared"
+                targets "valoader"
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            jniDebuggable true
+        }
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    externalNativeBuild {
+        cmake {
+            path file("src/main/cpp/CMakeLists.txt")
+            version "3.22.1"
+        }
+    }
+
+    packagingOptions {
+        jniLibs.useLegacyPackaging true
+    }
+
+    ndkVersion "29.0.14206865"
+}

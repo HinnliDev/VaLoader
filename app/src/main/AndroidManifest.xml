@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <queries>
+        <package android:name="com.tencent.tmgp.codev" />
+        <!-- MSDK checks these packages before dispatching QQ/WeChat login. -->
+        <package android:name="com.tencent.mm" />
+        <package android:name="com.tencent.mobileqq" />
+        <package android:name="com.tencent.tim" />
+    </queries>
+
+    <application
+        android:name=".ValoaderApplication"
+        android:allowBackup="false"
+        android:allowNativeHeapPointerTagging="false"
+        android:hardwareAccelerated="true"
+        android:label="Valoader"
+        android:process="com.tencent.tmgp.codev"
+        android:supportsRtl="false"
+        android:theme="@android:style/Theme.Material.NoActionBar.Fullscreen">
+
+        <activity
+            android:name=".LauncherActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.epicgames.ue4.GameActivity"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|density"
+            android:launchMode="singleTask"
+            android:resizeableActivity="false"
+            android:screenOrientation="sensorLandscape"
+            android:windowSoftInputMode="adjustNothing">
+            <meta-data android:name="android.app.lib_name" android:value="UE4" />
+        </activity>
+
+        <!-- Explicit OpenSDK convention: <real host package>.wxapi.WXEntryActivity. -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- MSDK's server-polled WeChat QR login UI (no Android OAuth callback). -->
+        <activity
+            android:name="com.tencent.gcloud.msdk.qrcode.WXQrCodeActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Material.NoActionBar.Fullscreen" />
+
+        <!-- EST is an optional post-login companion, hosted under Valoader's UID. -->
+        <service
+            android:name="com.tencent.estv.livesdk.service.PluginProcessService"
+            android:exported="false" />
+        <service
+            android:name="com.tencent.estv.ves.services.PluginService"
+            android:exported="false" />
+
+        <meta-data android:name="android.notch_support" android:value="true" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.EngineVersion" android:value="4.26.1" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.EngineBranch" android:value="++UE4+Release-4.26" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.ProjectVersion" android:value="0.0.1.0" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.DepthBufferPreference" android:value="0" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.bPackageDataInsideApk" android:value="true" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.bVerifyOBBOnStartUp" android:value="false" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.bShouldHideUI" android:value="true" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.ProjectName" android:value="CodeV" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.AppType" android:value="" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.bHasOBBFiles" android:value="true" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.BuildConfiguration" android:value="Shipping" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.CookedFlavors" android:value="ASTC" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.bValidateTextureFormats" android:value="true" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.bUseExternalFilesDir" android:value="true" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.bPublicLogFiles" android:value="true" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.bUseDisplayCutout" android:value="true" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.bAllowIMU" android:value="false" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.bSupportsVulkan" android:value="true" />
+        <meta-data android:name="com.epicgames.ue4.GameActivity.StartupPermissions" android:value="" />
+    </application>
+</manifest>
